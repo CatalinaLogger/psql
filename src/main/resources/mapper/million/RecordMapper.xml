@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.six.million.dao.RecordMapper">
+  <resultMap id="BaseResultMap" type="com.six.million.domain.Record">
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="device_id" jdbcType="INTEGER" property="deviceId" />
+    <result column="val0" jdbcType="DOUBLE" property="val0" />
+    <result column="val1" jdbcType="DOUBLE" property="val1" />
+    <result column="val2" jdbcType="DOUBLE" property="val2" />
+    <result column="val3" jdbcType="DOUBLE" property="val3" />
+    <result column="val4" jdbcType="DOUBLE" property="val4" />
+    <result column="val5" jdbcType="DOUBLE" property="val5" />
+    <result column="val6" jdbcType="DOUBLE" property="val6" />
+    <result column="val7" jdbcType="DOUBLE" property="val7" />
+    <result column="val8" jdbcType="DOUBLE" property="val8" />
+    <result column="val9" jdbcType="DOUBLE" property="val9" />
+  </resultMap>
+  <insert id="insert" parameterType="com.six.million.domain.Record">
+    insert into record (time, device_id, val0, 
+      val1, val2, val3, val4, 
+      val5, val6, val7, val8, 
+      val9)
+    values (#{time,jdbcType=TIMESTAMP}, #{deviceId,jdbcType=INTEGER}, #{val0,jdbcType=DOUBLE}, 
+      #{val1,jdbcType=DOUBLE}, #{val2,jdbcType=DOUBLE}, #{val3,jdbcType=DOUBLE}, #{val4,jdbcType=DOUBLE}, 
+      #{val5,jdbcType=DOUBLE}, #{val6,jdbcType=DOUBLE}, #{val7,jdbcType=DOUBLE}, #{val8,jdbcType=DOUBLE}, 
+      #{val9,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.six.million.domain.Record">
+    insert into record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="time != null">
+        time,
+      </if>
+      <if test="deviceId != null">
+        device_id,
+      </if>
+      <if test="val0 != null">
+        val0,
+      </if>
+      <if test="val1 != null">
+        val1,
+      </if>
+      <if test="val2 != null">
+        val2,
+      </if>
+      <if test="val3 != null">
+        val3,
+      </if>
+      <if test="val4 != null">
+        val4,
+      </if>
+      <if test="val5 != null">
+        val5,
+      </if>
+      <if test="val6 != null">
+        val6,
+      </if>
+      <if test="val7 != null">
+        val7,
+      </if>
+      <if test="val8 != null">
+        val8,
+      </if>
+      <if test="val9 != null">
+        val9,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deviceId != null">
+        #{deviceId,jdbcType=INTEGER},
+      </if>
+      <if test="val0 != null">
+        #{val0,jdbcType=DOUBLE},
+      </if>
+      <if test="val1 != null">
+        #{val1,jdbcType=DOUBLE},
+      </if>
+      <if test="val2 != null">
+        #{val2,jdbcType=DOUBLE},
+      </if>
+      <if test="val3 != null">
+        #{val3,jdbcType=DOUBLE},
+      </if>
+      <if test="val4 != null">
+        #{val4,jdbcType=DOUBLE},
+      </if>
+      <if test="val5 != null">
+        #{val5,jdbcType=DOUBLE},
+      </if>
+      <if test="val6 != null">
+        #{val6,jdbcType=DOUBLE},
+      </if>
+      <if test="val7 != null">
+        #{val7,jdbcType=DOUBLE},
+      </if>
+      <if test="val8 != null">
+        #{val8,jdbcType=DOUBLE},
+      </if>
+      <if test="val9 != null">
+        #{val9,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+
+  <insert id="insertForeach">
+    insert into record (time, device_id, val0, val1, val2, val3, val4, val5, val6, val7, val8, val9)
+    values
+    <foreach collection ="arr" item="record" separator =",">
+      (#{record.time,jdbcType=TIMESTAMP}, #{record.deviceId,jdbcType=INTEGER}, #{record.val0,jdbcType=DOUBLE},
+      #{record.val1,jdbcType=DOUBLE}, #{record.val2,jdbcType=DOUBLE}, #{record.val3,jdbcType=DOUBLE}, #{record.val4,jdbcType=DOUBLE},
+      #{record.val5,jdbcType=DOUBLE}, #{record.val6,jdbcType=DOUBLE}, #{record.val7,jdbcType=DOUBLE}, #{record.val8,jdbcType=DOUBLE},
+      #{record.val9,jdbcType=DOUBLE})
+    </foreach >
+  </insert>
+</mapper>
